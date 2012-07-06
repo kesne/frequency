@@ -1,0 +1,20 @@
+/*
+	Put anything you reference with "url()" in ../assets/
+	This way, you can minify your application, and just remove the "source" folder for production
+*/
+#app {
+	/*background-color: #555;*/
+}
+
+/* Add toolbar-like dark styling to other buttons: */
+.onyx-button-dark {
+	color: #F2F2F2 !important;
+	background-color: #555656 !important;
+	border-color: rgba(15, 15, 15, 0.5) !important;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.button-container {
+	padding: 20px;
+}
