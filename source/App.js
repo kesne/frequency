@@ -41,12 +41,12 @@ enyo.kind({
 			{content: "Frequency Study"}
 		]},
 		{classes: "onyx-toolbar-fix button-container", components: [
-			{kind: "onyx.Button", content: "Study Assets", ontap: "studyAssets", classes: "onyx-button-dark", style: "width: 100%"},
+			{kind: "onyx.Button", content: "Study Assets", ontap: "studyAssets", classes: "big-button onyx-button-dark", style: "width: 100%"},
 			{tag: "br"},{tag: "br"},
-			{kind: "onyx.Button", content: "Create A Study", ontap: "createStudy", classes: "onyx-button-dark", style: "width: 100%"},
+			{kind: "onyx.Button", content: "Create A Study", ontap: "createStudy", classes: "big-button onyx-button-dark", style: "width: 100%"},
 			{tag: "br"},{tag: "br"},
 			{tag: "br"},{tag: "br"},
-			{kind: "onyx.Button", content: "Perform A Study", ontap: "performStudy", classes: "onyx-affirmative", style: "background-color: #236300; width: 100%;"}
+			{kind: "onyx.Button", content: "Perform A Study", ontap: "performStudy", classes: "big-button onyx-affirmative", style: "background-color: #236300; width: 100%;"}
 		]}
 	],
 	studyAssets: function(){
