@@ -23,3 +23,15 @@
 	font-size: 1em;
 	height: 50px;
 }
+
+.popup-header {
+	font-size: 1.2em;
+	font-weight: bold;
+	padding-bottom: 10px;
+	padding-top: 5px;
+}
+
+.employee-item {
+	border-bottom: 1px solid #c1c1c1;
+	padding: 20px 15px;
+}
