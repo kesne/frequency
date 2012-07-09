@@ -36,7 +36,7 @@ enyo.kind({
 			{style: "padding: 20px", components: [
 				{kind: "onyx.TouchButton", content: "Employees", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},
-				{kind: "onyx.TouchButton", content: "Activities", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
+				{kind: "onyx.Button", content: "Activities", onclick: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},
 				{kind: "onyx.TouchButton", content: "Manage Studies", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},{tag: "br"},{tag: "br"},
