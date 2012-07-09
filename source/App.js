@@ -73,7 +73,7 @@ enyo.kind({
 			{fit: true},
 			{kind: "onyx.TouchButton", content: "Back", ontouchtap: "back"}
 		]},
-		{kind: "List", fit: true, multiSelect: true, count: 13, onSetupItem: "setupItem", components: [
+		{kind: "List", onChange: "changeList", name: "emp", fit: true, multiSelect: true, count: 13, onSetupItem: "setupItem", components: [
 	        {kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
 				{name: "item", classes: "item enyo-border-box", components: [
 					{name: "name"},
@@ -81,23 +81,70 @@ enyo.kind({
 				]}
 			]}
 	    ]},
-		{kind: "onyx.Toolbar", layoutKind: "FittableColumnsLayout", components: [
-			{kind: "onyx.IconButton", ontap: "massDelete", src: "assets/menu-icon-remove.png", style: "height: 32px; width: 150px;"},
+		{kind: "onyx.Toolbar", name: "footer", layoutKind: "FittableColumnsLayout", components: [
+			//FIXME: We can create a touch version of the iconbutton if performance is a problem.
+			{kind: "onyx.IconButton", showing: false, name: "deleter", ontap: "massDelete", src: "assets/menu-icon-remove.png", style: "height: 32px; width: 150px;"},
 			{fit: true},
-			{kind: "onyx.IconButton", src: "assets/menu-icon-add.png", classes: "onyx-icon-right", style: "height: 32px; width: 150px;"}
+			{kind: "onyx.IconButton", src: "assets/menu-icon-add.png", ontap: "addEmployee", classes: "onyx-icon-right", style: "height: 32px; width: 150px;"}
 		]},
 		{kind: "onyx.Popup", name: "deleteConfirm", centered: true, autoDismiss: false, modal: true, scrim: true, floating: true, style: "width: 320px;", components: [
-			{content: "Remove these 5 employees?"},
-			{kind: "FittableColumns", components: [
+			{content: "Remove Employees", style: "font-size: 1.2em; font-weight: bold; padding: 5px;"},
+			{name: "removeText", style: "padding: 5px; margin-bottom: 10px;"},
+			{components: [
 				//FIXME: We can swap these over to TouchButtons if we see performance issues with tap events.
 				{kind: "onyx.Button", content: "Cancel", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: left;", ontap: "closeDelete"},
 				{kind: "onyx.Button", content: "Delete", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: right;", ontap: "closeDelete"}
 			]}
+		]},
+		{kind: "onyx.Popup", name: "addEmployee", centered: true, autoDismiss: false, modal: true, scrim: true, floating: true, style: "width: 320px;", components: [
+			{content: "Add Employee", style: "font-size: 1.2em; font-weight: bold; padding: 5px;"},
+			{content: "Enter the name of the new employee.", style: "padding: 5px;"},
+			//{kind: "onyx.InputDecorator", components: [
+				//We fake this so that the styling looks better:
+				{kind: "onyx.Input", name: "employeeName", classes: "enyo-tool-decorator onyx-input-decorator", placeholder: "name...", style: "width: 300px; outline: none; margin-bottom: 10px;"},
+			//]},
+			{components: [
+				//FIXME: We can swap these over to TouchButtons if we see performance issues with tap events.
+				{kind: "onyx.Button", content: "Cancel", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: left;", ontap: "closeAdd"},
+				{kind: "onyx.Button", content: "Delete", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: right;", ontap: "closeAdd"}
+			]}
 		]}
 	],
 	
+	addEmployee: function(){
+		this.$.addEmployee.show();
+		this.$.employeeName.focus();
+	},
+	closeAdd: function(){
+		this.$.addEmployee.hide();
+	},
+	
 	massDelete: function(){
-		this.$.deleteConfirm.show();
+		var s = this.$.emp.getSelection();
+		if(s.selected.join("") !== ""){
+			//Length of selected doesn't work, so we implement our own solution:
+			var length = s.selected.join(" ").match(/true/g).length;
+			this.$.removeText.setContent("Remove these " + length + " employees?");
+			this.$.deleteConfirm.show();
+		}
+	},
+	
+	//This allows the onChange event to trigger properly:
+	rendered: function(){
+		this.inherited(arguments);
+		this.inited = true;
+	},
+	changeList: function(){
+		if(this.inited){
+			var s = this.$.emp.getSelection();
+			if(s.selected.join("") !== ""){
+				this.$.deleter.setShowing(true);
+				this.$.footer.reflow();
+			}else{
+				this.$.deleter.setShowing(false);
+				this.$.footer.reflow();
+			}
+		}
 	},
 	
 	closeDelete: function(){
