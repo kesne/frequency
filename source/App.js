@@ -82,15 +82,16 @@ enyo.kind({
 			]}
 	    ]},
 		{kind: "onyx.Toolbar", layoutKind: "FittableColumnsLayout", components: [
-			{kind: "onyx.IconButton", ontap: "massDelete", src: "assets/menu-icon-remove.png", style: "height: 32px;"},
+			{kind: "onyx.IconButton", ontap: "massDelete", src: "assets/menu-icon-remove.png", style: "height: 32px; width: 150px;"},
 			{fit: true},
-			{kind: "onyx.IconButton", src: "assets/menu-icon-add.png", style: "height: 32px;"}
+			{kind: "onyx.IconButton", src: "assets/menu-icon-add.png", classes: "onyx-icon-right", style: "height: 32px; width: 150px;"}
 		]},
 		{kind: "onyx.Popup", name: "deleteConfirm", centered: true, autoDismiss: false, modal: true, scrim: true, floating: true, style: "width: 320px;", components: [
 			{content: "Remove these 5 employees?"},
 			{kind: "FittableColumns", components: [
-				{kind: "onyx.Button", content: "Cancel", classes: "onyx-button-dark", style: "width: 150px; float: left;", ontap: "closeDelete"},
-				{kind: "onyx.TouchButton", content: "Delete", classes: "onyx-button-dark", style: "width: 150px; float: right;", ontouchtap: "closeDelete"}
+				//FIXME: We can swap these over to TouchButtons if we see performance issues with tap events.
+				{kind: "onyx.Button", content: "Cancel", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: left;", ontap: "closeDelete"},
+				{kind: "onyx.Button", content: "Delete", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: right;", ontap: "closeDelete"}
 			]}
 		]}
 	],

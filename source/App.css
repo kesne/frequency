@@ -38,3 +38,12 @@
 	display: inline-block;
 	vertical-align: middle;
 }
+
+/* Right-align icon*/
+.onyx-icon-right {
+	background-position: top right;
+}
+
+.onyx-icon-right.active, .onyx-icon-right:active:hover {
+	background-position: bottom right;
+}
