@@ -32,15 +32,15 @@ enyo.kind({
 	kind: "FittableRows",
 	components: [
 		{kind: "onyx.Toolbar", content: "Frequency Study"},
-		{kind: "Scroller", fit: true, components: [
+		{fit: true, components: [
 			{style: "padding: 20px", components: [
-				{kind: "onyx.TouchButton", content: "Employees", ontouchtap: "employees", style: "width: 100%"},
+				{kind: "onyx.TouchButton", content: "Employees", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},
-				{kind: "onyx.TouchButton", content: "Activities", onclick: "employees", style: "width: 100%"},
+				{kind: "onyx.TouchButton", content: "Activities", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},
-				{kind: "onyx.TouchButton", content: "Manage Studies", ontouchtap: "buttonPress", style: "width: 100%"},
+				{kind: "onyx.TouchButton", content: "Manage Studies", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},{tag: "br"},{tag: "br"},
-				{kind: "onyx.TouchButton", content: "Perform a Study", ontouchtap: "buttonPress", style: "width: 100%; background-color: #1E6B00; color: white;"}
+				{kind: "onyx.TouchButton", content: "Perform a Study", ontouchtap: "buttonPress", classes: "homeButton", style: "background-color: #1E6B00; color: white;"}
 			]}
 		]}
 	],
@@ -52,16 +52,52 @@ enyo.kind({
 enyo.kind({
 	name: "freq.employees",
 	kind: "FittableRows",
+	employees: [
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"kesne",
+		"Jordan"
+	],
 	components: [
 		{kind: "onyx.Toolbar", layoutKind: "FittableColumnsLayout", components: [
 			{content: "Employees"},
 			{fit: true},
 			{kind: "onyx.TouchButton", content: "Back", ontouchtap: "back"}
 		]},
-		{kind: "Scroller", fit: true, components: [
-			{content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec massa quam, sed porttitor libero. Nunc scelerisque pulvinar varius. Aliquam in neque vel nibh tincidunt volutpat non nec dui. Pellentesque sit amet volutpat libero. Ut sapien odio, lacinia eget volutpat a, sollicitudin a orci. Nunc lacinia scelerisque lorem ut cursus. Nunc malesuada volutpat imperdiet. In lobortis quam vel ligula feugiat sit amet sollicitudin elit varius. Maecenas orci eros, volutpat sed sodales et, hendrerit nec ante. Aliquam fermentum sem in lorem sodales nec tempus lectus interdum. Cras elementum consequat scelerisque. Vivamus non bibendum ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur luctus tellus vitae sem pharetra bibendum. Quisque ultricies, leo in scelerisque adipiscing, odio urna mollis elit, eget volutpat magna ipsum ut magna. Curabitur quis aliquet urna."}
+		{kind: "List", fit: true, count: 13, onSetupItem: "setupItem", components: [
+	        {kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
+				{name: "item", classes: "item enyo-border-box", components: [
+					{name: "name"},
+					{name: "index", style: "float: right;"}
+				]}
+			]}
+	    ]},
+		{kind: "onyx.Toolbar", layoutKind: "FittableColumnsLayout", components: [
+			{fit: true},
+			{kind: "onyx.IconButton", src: "assets/menu-icon-add.png", style: "height: 32px;"}
 		]}
 	],
+	
+	setupItem: function(inSender, inEvent) {
+	    // given some available data.
+	    var data = this.employees[inEvent.index];
+	    // setup the controls for this item.
+	    this.$.name.setContent(data);
+	    this.$.index.setContent(inEvent.index);
+	},
+	itemTap: function(inSender, inEvent) {
+	    alert("You tapped on row: " + inEvent.index);
+	},
+	
 	back: function(){
 		this.bubble("onView", {name: "home"})
 	}
