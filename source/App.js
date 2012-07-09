@@ -73,7 +73,7 @@ enyo.kind({
 			{fit: true},
 			{kind: "onyx.TouchButton", content: "Back", ontouchtap: "back"}
 		]},
-		{kind: "List", fit: true, count: 13, onSetupItem: "setupItem", components: [
+		{kind: "List", fit: true, multiSelect: true, count: 13, onSetupItem: "setupItem", components: [
 	        {kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
 				{name: "item", classes: "item enyo-border-box", components: [
 					{name: "name"},
@@ -82,20 +82,34 @@ enyo.kind({
 			]}
 	    ]},
 		{kind: "onyx.Toolbar", layoutKind: "FittableColumnsLayout", components: [
+			{kind: "onyx.IconButton", ontap: "massDelete", src: "assets/menu-icon-remove.png", style: "height: 32px;"},
 			{fit: true},
 			{kind: "onyx.IconButton", src: "assets/menu-icon-add.png", style: "height: 32px;"}
+		]},
+		{kind: "onyx.Popup", name: "deleteConfirm", centered: true, autoDismiss: false, modal: true, scrim: true, floating: true, style: "width: 320px;", components: [
+			{content: "Remove these 5 employees?"},
+			{kind: "FittableColumns", components: [
+				{kind: "onyx.Button", content: "Cancel", classes: "onyx-button-dark", style: "width: 150px; float: left;", ontap: "closeDelete"},
+				{kind: "onyx.TouchButton", content: "Delete", classes: "onyx-button-dark", style: "width: 150px; float: right;", ontouchtap: "closeDelete"}
+			]}
 		]}
 	],
 	
+	massDelete: function(){
+		this.$.deleteConfirm.show();
+	},
+	
+	closeDelete: function(){
+		this.$.deleteConfirm.hide();
+	},
+	
 	setupItem: function(inSender, inEvent) {
-	    // given some available data.
+		// given some available data.
 	    var data = this.employees[inEvent.index];
 	    // setup the controls for this item.
 	    this.$.name.setContent(data);
 	    this.$.index.setContent(inEvent.index);
-	},
-	itemTap: function(inSender, inEvent) {
-	    alert("You tapped on row: " + inEvent.index);
+	    this.$.item.addRemoveClass("item-selected", inSender.isSelected(inEvent.index));
 	},
 	
 	back: function(){

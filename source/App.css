@@ -26,16 +26,13 @@
 	padding: 12px 16px;
 }
 
-/*
-	FIXME: this class is not helpful when the 
-	swipeable item contains styled controls
-*/
 .onyx-swipeable-item-content {
 	padding: 0;
 }
 
 .item-selected {
-	/*background: #226B9A url(images/item-hilite.png) repeat-x bottom;*/
+	background: #226B9A;
+	color: white;
 }
 .item > * {
 	display: inline-block;
