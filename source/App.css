@@ -3,35 +3,5 @@
 	This way, you can minify your application, and just remove the "source" folder for production
 */
 #app {
-	/*background-color: #555;*/
-}
 
-/* Add toolbar-like dark styling to other buttons: */
-.onyx-button-dark {
-	color: #F2F2F2 !important;
-	background-color: #555656 !important;
-	border-color: rgba(15, 15, 15, 0.5) !important;
-	margin-top: 0;
-	margin-bottom: 0;
-}
-
-.button-container {
-	padding: 20px;
-}
-
-.big-button {
-	font-size: 1em;
-	height: 50px;
-}
-
-.popup-header {
-	font-size: 1.2em;
-	font-weight: bold;
-	padding-bottom: 10px;
-	padding-top: 5px;
-}
-
-.employee-item {
-	border-bottom: 1px solid #c1c1c1;
-	padding: 20px 15px;
 }
