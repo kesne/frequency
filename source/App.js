@@ -76,8 +76,7 @@ enyo.kind({
 		{kind: "List", onChange: "changeList", name: "emp", fit: true, multiSelect: true, count: 13, onSetupItem: "setupItem", components: [
 	        {kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
 				{name: "item", classes: "item enyo-border-box", components: [
-					{name: "name"},
-					{name: "index", style: "float: right;"}
+					{name: "name"}
 				]}
 			]}
 	    ]},
@@ -99,23 +98,21 @@ enyo.kind({
 		{kind: "onyx.Popup", name: "addEmployee", centered: true, autoDismiss: false, modal: true, scrim: true, floating: true, style: "width: 320px;", components: [
 			{content: "Add Employee", style: "font-size: 1.2em; font-weight: bold; padding: 5px;"},
 			{content: "Enter the name of the new employee.", style: "padding: 5px;"},
+			
 			//{kind: "onyx.InputDecorator", components: [
 				//We fake this so that the styling looks better:
-				{kind: "onyx.Input", name: "employeeName", classes: "enyo-tool-decorator onyx-input-decorator", placeholder: "name...", style: "width: 300px; outline: none; margin-bottom: 10px;"},
+				{kind: "onyx.Input", name: "employeeName", classes: "enyo-tool-decorator onyx-input-decorator", placeholder: "name...", style: "width: 300px; outline: none; margin-bottom: 15px;"},
 			//]},
 			{components: [
 				//FIXME: We can swap these over to TouchButtons if we see performance issues with tap events.
 				{kind: "onyx.Button", content: "Cancel", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: left;", ontap: "closeAdd"},
-				{kind: "onyx.Button", content: "Delete", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: right;", ontap: "closeAdd"}
+				{kind: "onyx.Button", content: "Add", classes: "onyx-button-dark", style: "width: 150px; height: 38px; float: right;", ontap: "closeAdd"}
 			]}
 		]}
 	],
 	
 	addEmployee: function(){
 		this.$.addEmployee.show();
-		window.setTimeout(enyo.bind(this, function(){
-			this.$.employeeName.focus();
-		}), 1000);
 	},
 	closeAdd: function(){
 		this.$.addEmployee.hide();
@@ -158,7 +155,6 @@ enyo.kind({
 	    var data = this.employees[inEvent.index];
 	    // setup the controls for this item.
 	    this.$.name.setContent(data);
-	    this.$.index.setContent(inEvent.index);
 	    this.$.item.addRemoveClass("item-selected", inSender.isSelected(inEvent.index));
 	},
 	
