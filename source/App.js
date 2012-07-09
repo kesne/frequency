@@ -113,7 +113,9 @@ enyo.kind({
 	
 	addEmployee: function(){
 		this.$.addEmployee.show();
-		this.$.employeeName.focus();
+		window.setTimeout(enyo.bind(this, function(){
+			this.$.employeeName.focus();
+		}), 1000);
 	},
 	closeAdd: function(){
 		this.$.addEmployee.hide();
