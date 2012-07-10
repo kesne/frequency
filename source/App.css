@@ -24,7 +24,8 @@
 
 /* Item Stuff */
 .item {
-	border-bottom: 1px solid #333333;
+	border-bottom: 1px solid silver;
+	border-top: 1px solid white;
 	padding: 12px 16px;
 	padding: 20px;
 }
@@ -36,6 +37,8 @@
 .item-selected {
 	background: #226B9A;
 	color: white;
+	border-bottom: 1px solid #184C6E;
+	border-top: 1px solid #3082B8;
 }
 .item > * {
 	display: inline-block;

@@ -1,6 +1,10 @@
 enyo.depends(
 	"$lib/layout",
 	"$lib/onyx",
+	"Lawnchair.js",
 	"App.css",
-	"App.js"
+	"App.js",
+	"Employees.js",
+	"Home.js",
+	"custom.js"
 );
