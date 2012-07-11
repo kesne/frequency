@@ -2,6 +2,7 @@ enyo.depends(
 	"$lib/layout",
 	"$lib/onyx",
 	"Lawnchair.js",
+	"sqlite.Lawnchair.js",
 	"App.css",
 	"App.js",
 	"Employees.js",
