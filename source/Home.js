@@ -9,7 +9,7 @@ enyo.kind({
 				{tag: "br"},{tag: "br"},
 				{kind: "onyx.TouchButton", content: "Activities", ontouchtap: "activities", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},
-				{kind: "onyx.Button", content: "Manage Studies", ontap: "studies", classes: "onyx-button-dark homeButton"},
+				{kind: "onyx.TouchButton", content: "Manage Studies", ontouchtap: "studies", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},{tag: "br"},{tag: "br"},
 				{kind: "onyx.TouchButton", content: "Perform a Study", ontouchtap: "buttonPress", classes: "homeButton", style: "background-color: #1E6B00; color: #F2F2F2;"}
 			]}
