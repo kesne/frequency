@@ -10,7 +10,8 @@ enyo.kind({
 		{kind: "Panels", name: "panels", fit: true, animate: false, draggable: false, components: [
 			{kind: "freq.home"},
 			{kind: "freq.employees"},
-			{kind: "freq.activities"}
+			{kind: "freq.activities"},
+			{kind: "freq.studies"}
 		]},
 		//This button allows you to fix any db formatting issues that may have arisen.
 		//{kind: "onyx.Button", content: "Nuke DB", ontap: "nukeDB"}
@@ -21,37 +22,42 @@ enyo.kind({
 			store.exists('employees', function(exists) {
 				if(exists === false){
 					console.log("Employees store doesn't exist, creating it.");
-					store.save({key: "employees", options: []})
+					store.save({key: "employees", options: []});
 				}
 			});
 			
 			store.exists('activities', function(exists) {
 				if(exists === false){
 					console.log("Activities store doesn't exist, creating it.");
-					store.save({key: "activities", options: {}})
+					store.save({key: "activities", options: {}});
 				}
 			});
 			
 			store.exists('studies', function(exists) {
 				if(exists === false){
 					console.log("Studies store doesn't exist, creating it.");
-					store.save({key: "studies", options: []})
+					store.save({key: "studies", options: {}});
 				}
 			});
 			
 			store.exists('records', function(exists) {
 				if(exists === false){
 					console.log("Records store doesn't exist, creating it.");
-					store.save({key: "records", options: []})
+					store.save({key: "records", options: []});
 				}
 			});
 		});
 	},
 	nukeDB: function(){
+		this.store.nuke();
+		return;
+		//Nuke is broken on localstorage, so we use this:
+		/*
 		this.store.remove("employees");
 		this.store.remove("activities");
 		this.store.remove("studies");
 		this.store.remove("records");
+		*/
 	},
 	manageView: function(inSender, inEvent){
 		var p = this.$.panels.getPanels();

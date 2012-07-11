@@ -53,3 +53,42 @@
 .onyx-icon-right.active, .onyx-icon-right:active:hover {
 	background-position: bottom right;
 }
+
+
+.groupbox-item {
+	padding: 10px;
+	min-height: 30px;
+	line-height: 30px;
+}
+.groupbox-item > * {
+	display: inline-block;
+}
+/* right-align the last control inside item */
+.groupbox-item > :last-child {
+	float: right;
+}
+/* IE8 */
+.groupbox-item > :first-child + div {
+	float: right;
+}
+.groupbox-item > :only-child {
+	display: block;
+	float: none;
+}
+
+
+.groubox-button {
+	background: transparent;
+	text-align: left;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 10px;
+	min-height: 30px;
+	line-height: 30px;
+	font-size: 1em;
+}
+.groubox-button:active:hover:not([disabled]) {
+	background: #C9C9C9;
+	border-top: none;
+}
