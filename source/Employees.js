@@ -1,6 +1,7 @@
 enyo.kind({
 	name: "freq.employees",
 	kind: "FittableRows",
+	employees: [],
 	components: [
 		{kind: "onyx.Toolbar", layoutKind: "FittableColumnsLayout", components: [
 			{content: "Employees"},

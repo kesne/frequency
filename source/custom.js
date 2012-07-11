@@ -37,6 +37,7 @@ enyo.kind({
 	}
 });
 
+//The browser implementations of this function are most likely optimized, so we'll only polyfill if we need to.
 if (!String.prototype.trim) {
 	String.prototype.trim = function(){
 		return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');

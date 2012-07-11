@@ -5,6 +5,7 @@ enyo.depends(
 	"App.css",
 	"App.js",
 	"Employees.js",
+	"Activities.js",
 	"Home.js",
 	"custom.js"
 );

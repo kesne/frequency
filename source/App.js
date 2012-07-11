@@ -9,8 +9,11 @@ enyo.kind({
 	components:[
 		{kind: "Panels", name: "panels", fit: true, animate: false, draggable: false, components: [
 			{kind: "freq.home"},
-			{kind: "freq.employees"}
-		]}
+			{kind: "freq.employees"},
+			{kind: "freq.activities"}
+		]},
+		//This button allows you to fix any db formatting issues that may have arisen.
+		//{kind: "onyx.Button", content: "Nuke DB", ontap: "nukeDB"}
 	],
 	create: function(){
 		this.inherited(arguments);
@@ -25,7 +28,7 @@ enyo.kind({
 			store.exists('activities', function(exists) {
 				if(exists === false){
 					console.log("Activities store doesn't exist, creating it.");
-					store.save({key: "activities", options: []})
+					store.save({key: "activities", options: {}})
 				}
 			});
 			
@@ -43,6 +46,12 @@ enyo.kind({
 				}
 			});
 		});
+	},
+	nukeDB: function(){
+		this.store.remove("employees");
+		this.store.remove("activities");
+		this.store.remove("studies");
+		this.store.remove("records");
 	},
 	manageView: function(inSender, inEvent){
 		var p = this.$.panels.getPanels();

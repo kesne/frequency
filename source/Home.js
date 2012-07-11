@@ -7,7 +7,7 @@ enyo.kind({
 			{style: "padding: 20px", components: [
 				{kind: "onyx.TouchButton", content: "Employees", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},
-				{kind: "onyx.Button", content: "Activities", onclick: "employees", classes: "onyx-button-dark homeButton"},
+				{kind: "onyx.TouchButton", content: "Activities", ontouchtap: "activities", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},
 				{kind: "onyx.TouchButton", content: "Manage Studies", ontouchtap: "employees", classes: "onyx-button-dark homeButton"},
 				{tag: "br"},{tag: "br"},{tag: "br"},{tag: "br"},
@@ -17,5 +17,8 @@ enyo.kind({
 	],
 	employees: function(){
 		this.bubble("onView", {name: "employees"});
+	},
+	activities: function(){
+		this.bubble("onView", {name: "activities"});
 	}
 });
