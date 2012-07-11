@@ -66,6 +66,7 @@ enyo.kind({
 	closeAdd: function(){
 		this.$.employeeName.setValue("");
 		this.$.addEmployee.hide();
+		this.reflow();
 	},
 	checkEnter: function(inSender, inEvent){
 		if(inEvent.keyCode === 13){
